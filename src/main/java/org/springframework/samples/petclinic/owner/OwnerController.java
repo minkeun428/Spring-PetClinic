@@ -45,6 +45,12 @@ class OwnerController {
 
 	private VisitRepository visits;
 
+	// 생성자를 통해서 OwnerRepository 받아오는 코드
+	// 의존성 받아오기
+	public OwnerController(OwnerRepository clinicService) {
+		this.owners = clinicService;
+	}
+
 	public OwnerController(OwnerRepository clinicService, VisitRepository visits) {
 		this.owners = clinicService;
 		this.visits = visits;
