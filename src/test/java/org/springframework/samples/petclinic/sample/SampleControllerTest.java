@@ -1,8 +1,28 @@
 package org.springframework.samples.petclinic.sample;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+@RunWith(SpringRunner.class) // 스프링 기반의 테스트를 작성하기 위함
+@SpringBootTest
 public class SampleControllerTest {
+
+	@Autowired
+	ApplicationContext applicationContext;
+
+	@Test
+	// ApplicationContext에 SampleController이 빈으로 등록되어 있는지 확인하는 테스트 코드
+	public void testDI() {
+		SampleController bean = applicationContext.getBean(SampleController.class);
+		assertThat(bean).isNotNull();
+	}
+
 
 	@Test
 	public void testDoSomething() {

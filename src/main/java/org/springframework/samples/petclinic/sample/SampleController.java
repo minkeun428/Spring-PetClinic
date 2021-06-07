@@ -1,5 +1,9 @@
 package org.springframework.samples.petclinic.sample;
 
+import org.springframework.stereotype.Controller;
+
+
+@Controller
 public class SampleController {
 
 	SampleRepository sampleRepository;
@@ -17,7 +21,6 @@ public class SampleController {
 	public SampleController(SampleRepository sampleRepository) {
 		this.sampleRepository = sampleRepository;
 	}
-
 
 	public void doSomething() {
 		System.out.println("doSomething 시작!!");
