@@ -47,6 +47,8 @@ class OwnerController {
 
 	// 생성자를 통해서 OwnerRepository 받아오는 코드
 	// 의존성 받아오기
+	// OwnerRepository없이는 이 인스턴스를 못 만들게끔 되어 있음
+	// 그 역할은 OwnerController에서 MockBean어노테이션으로 owners라는 객체에 자동 의존성 주입을 해주고 있음.
 	public OwnerController(OwnerRepository clinicService) {
 		this.owners = clinicService;
 	}
