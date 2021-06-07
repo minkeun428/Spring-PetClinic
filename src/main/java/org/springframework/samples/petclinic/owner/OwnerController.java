@@ -15,6 +15,8 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.sample.SampleRepository;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.management.ObjectName;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Map;
@@ -41,9 +44,35 @@ class OwnerController {
 
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 
+	/*
+	@Autowired
 	private final OwnerRepository owners;
+	*/
+	private OwnerRepository owners;
 
 	private VisitRepository visits;
+
+
+	/** 의존성 주입 받는 3가지 방법 **/
+	/** 1. 생성자 */
+	private PetRepository petRepository;
+	public OwnerController(PetRepository petRepository) {
+		this.petRepository = petRepository;
+	}
+
+	/** 2. 필드
+	@Autowired
+	private PetRepository petRepository;
+	*/
+
+	/** 3. 생성자
+	 * private PetRepository petRepository;
+	 * public void setPetRepository(PetRepository petRepository) {
+	 * 		this.petRepository = petRepository;
+	 * }
+	 * */
+
+
 
 	// 생성자를 통해서 OwnerRepository 받아오는 코드
 	// 의존성 받아오기
