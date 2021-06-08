@@ -57,6 +57,7 @@ class OwnerController {
 	/** 1. 생성자 */
 	private PetRepository petRepository;
 	public OwnerController(PetRepository petRepository) {
+
 		this.petRepository = petRepository;
 	}
 
@@ -65,7 +66,7 @@ class OwnerController {
 	private PetRepository petRepository;
 	*/
 
-	/** 3. 생성자
+	/** 3. Setter
 	 * private PetRepository petRepository;
 	 * public void setPetRepository(PetRepository petRepository) {
 	 * 		this.petRepository = petRepository;
@@ -85,6 +86,10 @@ class OwnerController {
 	public OwnerController(OwnerRepository clinicService, VisitRepository visits) {
 		this.owners = clinicService;
 		this.visits = visits;
+	}
+
+	public OwnerController() {
+
 	}
 
 	@InitBinder
